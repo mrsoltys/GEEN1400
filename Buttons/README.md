@@ -12,7 +12,7 @@ Using a Pull-Up resistor (recommended)
 
 Using the internal pullup resistor
 ----------------------------------
-![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInternalPullup_bb.png | width=300)
+![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInternalPullup_bb.png)
 
 
 Coding the button
