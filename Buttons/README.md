@@ -7,12 +7,37 @@ Hooking up a button
 ===================
 Using a Pull-Up resistor (recommended)
 --------------------------------------
+The recommended method to attach a button is using a "pullup resistor." The best resistor to use for this is a 10kΩ.
 
-![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInputPullupResistor_bb.png | width=50)
+![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInputPullupResistor_bb.png)
+	
+	 #define buttionPin 2
+     void setup(){
+     	pinMode(buttonPin,INPUT);
+     }
+
+     void loop(){
+     	if(digitalRead(buttonPin)==LOW)
+     		//The button was pressed
+     }
 
 Using the internal pullup resistor
 ----------------------------------
-![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInternalPullup_bb.png | width=200)
+Alternitvly, the microcontroller has in internal resistor built in. This circuit does not need an external resistor.
+
+![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInternalPullup_bb.png)
+
+To activate the internal resistor you need to use `INPUT_PULLUP` in the `setup()` function:
+
+	 #define buttionPin 2
+     void setup(){
+     	pinMode(buttonPin,INPUT_PULLUP);
+     }
+
+     void loop(){
+     	if(digitalRead(buttonPin)==LOW)
+     		//The button was pressed
+     }
 
 
 Coding the button
