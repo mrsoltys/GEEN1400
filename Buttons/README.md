@@ -8,11 +8,11 @@ Hooking up a button
 Using a Pull-Up resistor (recommended)
 --------------------------------------
 
-![](https://github.com/mrsoltys/GEEN1400/blob/master/Buttons/ButtonInputPullupResistor_bb.png | width=300)
+![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInputPullupResistor_bb.png | width=300)
 
 Using the internal pullup resistor
 ----------------------------------
-![](https://github.com/mrsoltys/GEEN1400/blob/master/Buttons/ButtonInternalPullup_bb.pngg | width=300)
+![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInternalPullup_bb.png | width=300)
 
 
 Coding the button
