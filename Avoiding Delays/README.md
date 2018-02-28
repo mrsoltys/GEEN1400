@@ -40,4 +40,4 @@ If we avoid delays, we can have the servo sweep _while_ the LED blinks, and the 
 	sweepWithoutDelay();
 	// Do other stuff as well!
 
-check out the functions `blinkWithoutDelay()` and `sweepWithoutDelay();` up top!
+check out the functions `blinkWithoutDelay()` and `sweepWithoutDelay()` up top!
