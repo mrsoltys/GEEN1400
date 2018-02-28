@@ -7,6 +7,7 @@ Hooking up a button
 ===================
 Using a Pull-Up resistor (recommended)
 --------------------------------------
+![](ButtonInputPullupResistor_bb.png | width=300)
 
 Using the internal pullup resistor
 ----------------------------------
