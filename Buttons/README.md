@@ -11,7 +11,7 @@ The recommended method to attach a button is using a "pullup resistor." The best
 
 ![](https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/ButtonInputPullupResistor_bb.png)
 	
-	 #define buttionPin 2
+	 #define buttonPin 2
      void setup(){
      	pinMode(buttonPin,INPUT);
      }
@@ -29,7 +29,7 @@ Alternitvly, the microcontroller has in internal resistor built in. This circuit
 
 To activate the internal resistor you need to use `INPUT_PULLUP` in the `setup()` function:
 
-	 #define buttionPin 2
+	 #define buttonPin 2
      void setup(){
      	pinMode(buttonPin,INPUT_PULLUP);
      }
