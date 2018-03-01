@@ -96,6 +96,7 @@ Then, you can set the arduino to use the pin as an interrupt like this:
 
    
    # FAQ
+   
     * **Q: Why Not use a pull-down resistor?**
       * A: If you know what you're doing, a pull-down resistor can be fine. The main problem I've had with a pull-down resistor is if the button is connected with a long piece of wire to the Arduino, the wire can act as an antenna and possibly trigger erroneously. I haven't had this problem with a pull-up resistor, so I always use them. Also, I went down a rabbit-hole once trying to understand which uses _less_ power and my answer was, suprisingly, that a pull-up resistor uses _slightly_ less power than a pull-down. 
 
