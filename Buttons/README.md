@@ -69,4 +69,26 @@ The microcontroller is checking for the button press for 1 ms every 10 seocnds. 
 
 Pins 2 and 3 on the Arduino can be set up to "Interrupt" the code. This means the code will pause, do a specific action, and then resume where it left off.
 
+The wiring of the button is the same, you can either use a pullup resistor (use `pinMode(buttonPin,INPUT)`), or the internal pullup on the Arduino board (use `pinMode(buttonPin,INPUT_PULLUP)`). _I reccomend a pullup resistor._
+
+Then, you can set the arduino to use the pin as an interrupt like this:
+
+    void setup() {
+      pinMode(buttonPin, INPUT);
+      attachInterrupt(digitalPinToInterrupt(buttonPin), ISR, LOW);
+    }
+
+    void ISR(){
+    	\\Do Something when the button is pressed.
+    }
+
+ **Notes:**
+ 
+  * `ISR` is a _function_ to call when the button is pressed. I can call it whatever I want (it does not need to be called `ISR()`). For example I could call the function blink: `attachInterrupt(digitalPinToInterrupt(buttonPin), blink, LOW);` and then the function the interrupt would look for would be `void blink()`
+  * The last term, `LOW` is the state that will trigger the intterrupt. `LOW` means _when the button is pressed_. You can also try
+
+     * `CHANGE` - When the button state changes from `HIGH` to `LOW` or visa versa
+     * `FALLING` - When the button state chagnes from `HIGH` to `LOW` only. (When the button is being pressed)
+     * `RISING` - When the button state chagnes from `LOW` to `HIGH` only. (When the button is being pressed)
+     * `HIGH` - When the button _is not_ pressed. 
 
