@@ -6,6 +6,7 @@ Delays can keep your arduino from living up to its full potential! They pause th
  * [Blink an LED](https://github.com/mrsoltys/GEEN1400/blob/master/Avoiding%20Delays/blinkWithoutDelay.ino)
  * [Sweep a Servo](https://github.com/mrsoltys/GEEN1400/blob/master/Avoiding%20Delays/sweepWithoutDelay.ino)
 
+You'll notice they all operate using the `millis()` command which returns the current time (in milliseconds) since the Arduino was powered on. Instead of using a delay, we save the time an action started (like the servo begins sweeping or the LED turns on), and the compare the current time, `millis()`, to the previous time. 
 
 ### Example: Doing three things at once
 
