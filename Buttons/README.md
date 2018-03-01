@@ -44,7 +44,7 @@ Coding the button
 =================
 ### Using digitalRead()
 
-The easy way to check if a button is pressed is using `digitalRead()`. In all of my examples, if `digitalRead(buttonPin)==LOW` the button is pressed, and if `digitalRead(buttonPin)==HIGH` the button _is not_ pressed.  
+The easy way to check if a button is pressed is using `digitalRead()`. In all of my examples, if `digitalRead(buttonPin)==LOW` the button is pressed, and if `digitalRead(buttonPin)==HIGH` the button _is not_ pressed.  This is because both of my example hookups use _pull-up resistors_ (either external or internal).
 
 This is counter-intuitive for most engineers, so I'll reiterate:
 
@@ -84,11 +84,20 @@ Then, you can set the arduino to use the pin as an interrupt like this:
 
  **Notes:**
  
-  * `ISR` is a _function_ to call when the button is pressed. I can call it whatever I want (it does not need to be called `ISR()`). For example I could call the function blink: `attachInterrupt(digitalPinToInterrupt(buttonPin), blink, LOW);` and then the function the interrupt would look for would be `void blink()`
-  * The last term, `LOW` is the state that will trigger the intterrupt. `LOW` means _when the button is pressed_. You can also try
+   * The last term, `LOW` is the state that will trigger the intterrupt. `LOW` means _when the button is pressed_. You can also try
 
      * `CHANGE` - When the button state changes from `HIGH` to `LOW` or visa versa
      * `FALLING` - When the button state chagnes from `HIGH` to `LOW` only. (When the button is being pressed)
      * `RISING` - When the button state chagnes from `LOW` to `HIGH` only. (When the button is being pressed)
      * `HIGH` - When the button _is not_ pressed. 
+   * `ISR` is a _function_ to call when the button is pressed. You can call it whatever you want (it does not need to be called `ISR()`). E.g.,  you could call the function blink: `attachInterrupt(digitalPinToInterrupt(buttonPin), blink, LOW);` and then the function the interrupt would look for would be `void blink()`
+   * _Warning:_ The function you call should be very short and quick (a couple of lines max), and not contain loops or delays. The function also has to be of type `void` and can't take any inputs.
+   * _Warning:_ Any variables you need to access in the interrupt function need to be _global_ (i.e., defined _above_ `void setup()`) and should be proceeded with the keyword `volatile`. 
+
+   
+   # FAQ
+    * **Q: Why Not use a pull-down resistor?**
+      * A: If you know what you're doing, a pull-down resistor can be fine. The main problem I've had with a pull-down resistor is if the button is connected with a long piece of wire to the Arduino, the wire can act as an antenna and possibly trigger erroneously. I haven't had this problem with a pull-up resistor, so I always use them. Also, I went down a rabbit-hole once trying to understand which uses _less_ power and my answer was, suprisingly, that a pull-up resistor uses _slightly_ less power than a pull-down. 
+
+
 
