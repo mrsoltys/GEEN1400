@@ -5,11 +5,11 @@ Buttons seem like the simplest sensor, and that can often lull you to think they
 
 Hooking up a button
 ===================
-Using a Pull-Up resistor (recommended)
---------------------------------------
-The recommended method to attach a button is using a "pullup resistor." The best resistor to use for this is a 10kΩ.
+##Using an external Pull-Up resistor (recommended)
 
-<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/ButtonInputPullupResistor_bb.png" width="300">
+The recommended method to attach a button is using an external "pullup resistor." The best resistor to use for this is a 10kΩ.
+
+<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/ButtonInputPullupResistor_bb.png" width="400">
 	
 	 #define buttonPin 2
      void setup(){
@@ -25,7 +25,7 @@ Using the internal pullup resistor
 ----------------------------------
 Alternitvly, the microcontroller has in internal resistor built in. This circuit does not need an external resistor.
 
-<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/ButtonInternalPullup_bb.png" width="300">
+<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/ButtonInternalPullup_bb.png" width="400">
 
 To activate the internal resistor you need to use `INPUT_PULLUP` in the `setup()` function:
 
