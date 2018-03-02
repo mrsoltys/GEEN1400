@@ -4,7 +4,7 @@
 // The LED turns off when the button is released.
 // This assumes you have an Input-Pullup resistor
 
-#define buttonPin 2 					//Button on Pin 2
+#define buttonPin 2						//Button on Pin 2
 #define ledPin 13						//LED on Pin 13
 
 void setup(){
@@ -13,10 +13,10 @@ void setup(){
 }
 
 void loop(){
- 	if(digitalRead(buttonPin)==LOW){	//The Button was pressed
- 		digitalWrite(ledPin,HIGH);		//Turn on the LED
- 	}
- 	else{								//The Button is not pressed
- 		digitalWrite(ledPin,LOW);		//Turn off the LED
- 	}
+	if(digitalRead(buttonPin)==LOW){	//The Button was pressed
+		digitalWrite(ledPin,HIGH);		//Turn on the LED
+	}
+	else{								//The Button is not pressed
+		digitalWrite(ledPin,LOW);		//Turn off the LED
+	}
 }

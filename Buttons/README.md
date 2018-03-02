@@ -97,8 +97,21 @@ Then, you can set the arduino to use the pin as an interrupt like this:
    
 # FAQ
 
-* **Q: Why Not use a pull-down resistor?**
-  * A: If you know what you're doing, a pull-down resistor can be fine. The main problem I've had with a pull-down resistor is if the button is connected with a long piece of wire to the Arduino, the wire can act as an antenna and possibly trigger erroneously. I haven't had this problem with a pull-up resistor, so I always use them. Also, I went down a rabbit-hole once trying to understand which uses _less_ power and my answer was, suprisingly, that a pull-up resistor uses _slightly_ less power than a pull-down. 
+###Q: Why Not use a pull-down resistor?
+**A:** If you know what you're doing, a pull-down resistor can be fine. I went down a rabbit-hole once trying to understand which uses _less_ power and my answer was, suprisingly, that a pull-up resistor uses _slightly_ less power than a pull-down. Also, the problem I've had with pull-down resistors is if a button is connected with a long piece of wire to the Arduino, the wire can act as an antenna and possibly trigger erroneously. I've never had this problem with a pull-up resistor. So I always use a pull-up.
+
+###Q: What is 'Button DeBouncing?'
+**A:** Say I want to toggle the state of an LED every time a button is pressed. I could try this:
+
+      void loop(){
+        if(digitalRead(buttonPin)==LOW)   //The Button was pressed
+          ledState = !ledState;            //toggle the LED state
+        digitalWrite(ledPin,ledState);
+      }
+
+  But it's not going to work. Why? Because the it takes me about _100 ms_ to press a button. Meanwhile, the arduino is running 16 million instructions per second, meaning this bit of code probably only took a handful of microseconds to process. That means that my Arduino checked the button and toggled the LED state off and on **thousands of times** between the time my finger first touched the button and when it left the button. 
+
+  Enter the "debounce"
 
 
 
