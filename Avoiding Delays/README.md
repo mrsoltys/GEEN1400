@@ -42,3 +42,6 @@ If we avoid delays, we can have the servo sweep _while_ the LED blinks, and the 
 	// Do other stuff as well!
 
 check out the functions `blinkWithoutDelay()` and `sweepWithoutDelay()` up top!
+
+## Button Interrupts 
+For even better performance for your buttons, even with delays, check out the tutorial on button interrupts!
