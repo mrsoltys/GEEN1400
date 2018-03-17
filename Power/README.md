@@ -1,3 +1,6 @@
+
+<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Power/Arduino Voltage Supply.png" width="400">
+
 # Powering your Arduino
 
 It is important to only power your arduino using one of the following options. Powering your Arduino from mulitple sources (e.g., the barrel jack _and_ the VIN pin can lead to unexpected complications and potentially ruin your Arduino)
