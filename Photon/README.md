@@ -87,3 +87,42 @@ To setup my webhook, I'll create a JSON file that contains my request, and a key
 	  "auth": null,
 	  "mydevices": true
 	}
+
+Some of these values might change based on different APIs, but what I've shown here is pretty standard. If you'd like a more complex example navigating a larger response and returning more variables, check out [this one that uses the Weather Underground API](https://community.particle.io/t/tutorial-webhooks-and-responses-with-parsing-json-mustache-tokens/14612).
+
+I want to save this file as `googleDistanceMatrix.json` and then publish it to the web using the command in the terminal:
+
+    particle webhook create googleDistanceMatrix.json
+
+### Testing with your computer
+I can confirm the webhook is working by opening the particle.io events console and then entering this command in the terminal:
+
+    particle publish googleDistanceMatrix
+
+If all goes well I should see the event publish in the particle.io events console in my browser.
+
+## On your Photon
+
+In your `void setup()` function, you'll want to tell your photon to listen for updates to this webhook:
+
+    Particle.subscribe("hook-response/googleDistanceMatrix", trafficHandler, MY_DEVICES);
+
+The `trafficHandler` variable in the middle is defining a _new function we need to create_ that is called any time any of `MY_DEVICES` gets a `googleDistanceMatrix` response. That function will parse the incoming data (sent as a string) and convert it to an integer to use however I like. 
+
+	int trafficTime; 
+	void trafficHandler(const char *name, const char *data){
+	    String str = String(data);
+	    updateTrafficTime = Time.now();
+	    trafficTime=str.toInt();
+	}
+
+Finally, inside my `void loop()` I need to tell the device to query the API if it hasn't been called in a while. The free limit on the API we're using is 2,500 calls/day, or roughly 1 call every 2 minutes.
+
+	  //check every 120 seconds
+	  if((Time.now()-updateTrafficTime)>120){
+	    Particle.publish(TRAFFIC_PUB);
+	    unsigned long wait = millis();
+	    //wait for subscribe to kick in or 5 secs max
+	    while ((Time.now()-updateTrafficTime)>120 && (millis()-wait < 5000)) Particle. process(); //Check for new posts if ((Time.now()-updateTrafficTime)>120)
+	      Serial.println("Traffic update failed");
+	    }
