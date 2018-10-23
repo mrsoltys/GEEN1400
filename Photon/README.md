@@ -12,7 +12,7 @@ To connect to UCB Wireless, you'll have to email [help@colorado.edu](mailto:help
  2) Hold down the `SETUP` button until the light begins to flash blue.
  3) Open your Terminal App, and type:
 
-	particle serial mac
+	 particle serial mac
 
 It normally takes IT about 24 hours to get your device added to CU's network. 
 
@@ -20,9 +20,26 @@ It normally takes IT about 24 hours to get your device added to CU's network.
 
 You can program the Photon over WiFi, which is a really nice feature... but sometimes you'll want to program it over USB.
 
+# Particle Variables and Functions
+One really cool thing about the Photon is the ability to use Particle's app to view and change variables. Particle currently allows you to view three variable types:
+
+  * `INT`
+  * `DOUBLE`
+  * `STRING`
+
+ To make a variable viewable on the cloud, use [`Particle.variable`](https://docs.particle.io/reference/firmware/photon/#particle-variable-) inside your `void setup()` like this:
+
+    double tempC = 0;
+
+    void setup(){
+  		Particle.variable("temp", tempC);
+  	}
+
+You also might want to change a variable from your phone on your photon. To do this, use [`Particle.function`](https://docs.particle.io/reference/firmware/photon/#particle-function-)
+
 # Webhooks
 
-The photon is capable of sending and recieiving HTTP POST and GET requests without any intermedieraies, but if it gets a big reply, it could overrun the 128 kb RAM on the photon and give you bad data. My experience is it's much better to use a server somewhere on the internet to do the GET and POST requests, parse the results, and send just the data you want to your photon. This is called a _webhook_.
+The photon is capable of sending and recieiving HTTP POST and GET requests without any intermedieraies, but if it gets a big reply, it could overrun the 128 kb RAM on the photon and give you bad data. My experience is it's much better to use a server somewhere on the internet to do the GET and POST requests, parse the results, and send just the data you want to your photon. This is called using _a webhook_.
 
 You can set up your own webhook on the [particle console](https://console.particle.io/integrations/); however, I feel this makes the behind the sceens of what's going on a bit of a black box. Instead, you can create a webhook from a `.JSON` file:
 
