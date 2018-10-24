@@ -37,6 +37,17 @@ One really cool thing about the Photon is the ability to use Particle's app to v
 
 You also might want to change a variable from your phone on your photon. To do this, use [`Particle.function`](https://docs.particle.io/reference/firmware/photon/#particle-function-)
 
+You'll need a couple parts to this. In your `void.setup()` you'll need to define the function:
+
+    Particle.function("setVar",setVar);
+
+and then you'll need to write the function that does something:
+
+	int setVar(String args){
+		variable=args.toInt();
+		return variable;
+	}
+
 # Webhooks
 
 The photon is capable of sending and recieiving HTTP POST and GET requests without any intermedieraies, but if it gets a big reply, it could overrun the 128 kb RAM on the photon and give you bad data. My experience is it's much better to use a server somewhere on the internet to do the GET and POST requests, parse the results, and send just the data you want to your photon. This is called using _a webhook_.
