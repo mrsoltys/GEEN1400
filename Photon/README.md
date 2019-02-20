@@ -154,3 +154,59 @@ Finally, inside my `void loop()` I need to tell the device to query the API if i
 	    while ((Time.now()-updateTrafficTime)>120 && (millis()-wait < 5000)) Particle. process(); //Check for new posts if ((Time.now()-updateTrafficTime)>120)
 	      Serial.println("Traffic update failed");
 	    }
+
+### Sending Requests with Custom Parameters
+
+In the above example, the start and end location are always the same. If I wanted to change the start and end location, I'd have to edit the integration on particle's website, or upload a new JSON file. But there's an easier way!  I can add custom parameters to append to the request, and send them from my Photon to the internet.
+
+[Open Weather Map has an API](https://openweathermap.org/current) that I can send a City ID, and it will return the current weather conditions.
+
+An example call to get the current weather conditions in Boulder, CO (`id=5574991`) might look like
+
+     http://api.openweathermap.org/data/2.5/weather?APPID=YOUR_API_KEY&units=imperial&id=5574991
+
+And will Return
+
+     {
+     	"coord":{"lon":-105.27,"lat":40.02},
+     	"weather":[{"id":721,"main":"Haze","description":"haze","icon":"50d"}],
+     	"base":"stations",
+     	"main":{"temp":18.34,"pressure":1004,"humidity":49,"temp_min":3.2,"temp_max":26.6},
+     	"visibility":16093,
+     	"wind":{"speed":11.99,"deg":288.003},
+     	"clouds":{"all":1},
+     	"dt":1550678040,
+     	"sys":{"type":1,"id":3958,"message":0.004,"country":"US","sunrise":1550670397,"sunset":1550709803},
+     	"id":5574991,
+     	"name":"Boulder",
+     	"cod":200
+     }
+
+Super useful, but what if I want to dynamicaly change the City ID without making a bunch of seperate integrations. I can set up the integration and make the `id` field one that gets passed to it!  They integration would look like this:
+
+     {
+	  "event": "openWeatherByCity",
+	  "url": "http://api.openweathermap.org/data/2.5/weather?APPID=YOUR_API_KEY&units=imperial",
+	  "requestType": "POST",
+	  "headers": null,
+	  "query": "{"id": "{{id}}"}",
+	  "responseTemplate": "{{#rows}}{{#elements}}{{main.temp}}{{/elements}}{{/rows}}",
+	  "json": null,
+	  "auth": null,
+	  "mydevices": true
+	 }
+
+Some Important Notes:
+  * I've left off the `id=5574991` part of the `url`, because I'll be passing this to the request dynamically. This means this request won't work by default, unless I append an ID to it.
+  * I've added the `query` tag to have `{"id": "{{id}}"}`. This is where the integration is looking for a City ID to be passed to it.
+
+In my photon code, i can now pass the city I want to see to the particle integration. Say I want to look up the weather for Clemson, SC (`id=4574989`):
+
+    Particle.publish("openWeatherByCity","{\"id\":4574989}")
+
+The integration will now append `&id=4574989` to the end of the HTTP request, and return the weather for Clemson, SC! If I wanted a differnet city, say... Brisbane, AU (`id=2174003`), all I have to do is send a different publish command with the new City ID:
+ 
+    Particle.publish("openWeatherByCity","{\"id\":2174003}")
+
+
+
