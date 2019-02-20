@@ -50,11 +50,16 @@ and then you'll need to write the function that does something:
 
 # Webhooks
 
-The photon is capable of sending and recieiving HTTP POST and GET requests without any intermedieraies, but if it gets a big reply, it could overrun the 128 kb RAM on the photon and give you bad data. My experience is it's much better to use a server somewhere on the internet to do the GET and POST requests, parse the results, and send just the data you want to your photon. This is called using _a webhook_.
+The photon is capable of sending and recieiving HTTP POST and GET requests without any intermedieraies, but if it gets a big reply, it could overrun the 128 kb RAM on the photon and give you bad data. My experience is it's *much better and easier* to use a server somewhere on the internet to do the GET and POST requests, parse the results, and send just the data you want to your photon. This is called using _a webhook_.
 
-You can set up your own webhook on the [particle console](https://console.particle.io/integrations/); however, I feel this makes the behind the sceens of what's going on a bit of a black box. Instead, you can create a webhook from a `.JSON` file:
+You can set up your own webhook on the [particle console](https://console.particle.io/integrations/); however, I feel this makes the behind the scenes of what's going on a bit of a black box. Instead, you can create a webhook from a `.JSON` file:
 
     particle webhook create webhook.json
+
+Either way, the results are the same: You can query APIs on the internet to get really cool information, that you can then use on your photon.  Here I've documented a couple APIs that I think are cool:
+
+   * Using [Google Distance Matrix](https://developers.google.com/maps/documentation/distance-matrix/start) to get real time traffic data for my commute home
+   * Using [Open Weather Map's Current Weather API](https://openweathermap.org/current) to get current weather conditions for any location in the world
 
 ## Example: Using an API to get driving time.
 
@@ -155,11 +160,11 @@ Finally, inside my `void loop()` I need to tell the device to query the API if i
 	      Serial.println("Traffic update failed");
 	    }
 
-### Sending Requests with Custom Parameters
+# Sending Requests with Custom Parameters (i.e., querie parameters)
 
-In the above example, the start and end location are always the same. If I wanted to change the start and end location, I'd have to edit the integration on particle's website, or upload a new JSON file. But there's an easier way!  I can add custom parameters to append to the request, and send them from my Photon to the internet.
+In the above example, the start and end location are always the same. If I wanted to change the start and end location, I'd have to edit the integration on particle's website, or upload a new JSON file. But there's an easier way: I can add custom parameters to append to the request, and send them from my Photon to the internet.
 
-[Open Weather Map has an API](https://openweathermap.org/current) that I can send a City ID, and it will return the current weather conditions.
+For this example, [Open Weather Map has an API](https://openweathermap.org/current) that I can send a City ID, and it will return the current weather conditions.
 
 An example call to get the current weather conditions in Boulder, CO (`id=5574991`) might look like
 
@@ -182,7 +187,7 @@ And will Return
      	"cod":200
      }
 
-Super useful, but what if I want to dynamicaly change the City ID without making a bunch of seperate integrations. I can set up the integration and make the `id` field one that gets passed to it!  They integration would look like this:
+_Super useful_, but what if I want to dynamicaly change the City ID without making a bunch of seperate webhook integrations? (Note: Particle limits a photon to using only *four handlers,* so anything beyond 4 identical integrations won't work anyways). I can set up the integration and make the `id` field one that gets passed to it using the `query paramters` field!  They integration would look like this:
 
      {
 	  "event": "openWeatherByCity",
@@ -200,13 +205,15 @@ Some Important Notes:
   * I've left off the `id=5574991` part of the `url`, because I'll be passing this to the request dynamically. This means this request won't work by default, unless I append an ID to it.
   * I've added the `query` tag to have `{"id": "{{id}}"}`. This is where the integration is looking for a City ID to be passed to it.
 
-In my photon code, i can now pass the city I want to see to the particle integration. Say I want to look up the weather for Clemson, SC (`id=4574989`):
+In my photon code, I can now pass the city I want to see to the particle integration. Say I want to look up the weather for Clemson, SC (`id=4574989`):
 
     Particle.publish("openWeatherByCity","{\"id\":4574989}")
 
 The integration will now append `&id=4574989` to the end of the HTTP request, and return the weather for Clemson, SC! If I wanted a differnet city, say... Brisbane, AU (`id=2174003`), all I have to do is send a different publish command with the new City ID:
  
     Particle.publish("openWeatherByCity","{\"id\":2174003}")
+
+## Another Example Using the Google Calendar API
 
 
 
