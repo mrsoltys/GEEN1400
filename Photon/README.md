@@ -194,7 +194,7 @@ _Super useful_, but what if I want to dynamicaly change the City ID without maki
 	  "url": "http://api.openweathermap.org/data/2.5/weather?APPID=YOUR_API_KEY&units=imperial",
 	  "requestType": "POST",
 	  "headers": null,
-	  "query": "{"id": "{{id}}"}",
+	  "query": {"id": "{{id}}"},
 	  "responseTemplate": "{{#rows}}{{#elements}}{{main.temp}}{{/elements}}{{/rows}}",
 	  "json": null,
 	  "auth": null,
@@ -215,5 +215,6 @@ The integration will now append `&id=4574989` to the end of the HTTP request, an
 
 ## Another Example Using the Google Calendar API
 
+This ended up being a rabbit hole... Not sure how to get OAuth Credentials yet... but know it's possible with some googling.
 
 
