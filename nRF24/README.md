@@ -16,3 +16,6 @@ The RF24 radios use the [SPI protocol](https://www.arduino.cc/en/reference/SPI) 
 
   * CE 
   * CSN
+
+For the examples in this GitHub Repo, I'll be using this hookup schematic: 
+<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/radioHookup.png" width="400">
