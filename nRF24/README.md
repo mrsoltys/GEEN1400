@@ -59,9 +59,9 @@ Then, in your `void loop()` you can transmit data using:
 In the `void setup()` you'll need to tell the radio that you'll be reading data (Recieving) and to start listening for incomming data:
 
        radio.openReadingPipe(address);
-       radio.startpListening();
+       radio.startListening();
 
-Then, in your `void loop()` you can tell if there's an incomming message using `if(radio.available())`. If there is datat to read, you can read it using:
+Then, in your `void loop()` you can tell if there's an incomming message using `if(radio.available())`. If there is data to read, you can read it using:
 
        radio.read()
 
