@@ -18,4 +18,6 @@ The RF24 radios use the [SPI protocol](https://www.arduino.cc/en/reference/SPI) 
   * CSN
 
 For the examples in this GitHub Repo, I'll be using this hookup schematic: 
-<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/Buttons/Schematics/radioHookup.png" width="400">
+<img src="https://raw.githubusercontent.com/mrsoltys/GEEN1400/master/nRF24/radioHookup.png" width="400">
+
+The only important note here is [some hookup guides](https://www.mysensors.org/build/connect_radio) suggest using a 4.7µF to 47µF decoupling capacitor accorss power and ground. This doesn't hurt, and seems to be a best pratice that could save you a headache down the line.
