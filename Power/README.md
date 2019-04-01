@@ -13,3 +13,7 @@ It is important to only power your arduino using one of the following options. P
 ## Recommended Input Voltage
 
   This really depends on your project. If you have components that operate on 12V, you may consider using a 12V power supply to provide power to your Arduino and these components. If not, I'd recommend the smallest Voltage you can get away with, as less heat is lossed in the regulator (and because of this, the regular is safe to provide more current).  7V into the barrel jack or 6V into VIN are both good options.
+
+  # Low Power / Long Battery tips
+
+  [This guide has some great tips on extending the battery life of your arduino project... but some of them are pretty extreme so proceed with caution!](https://www.mysensors.org/build/battery). [There are some even more complicated power-saving methods here. Some of these may brick your arduino if you don't know what you're getting into.](http://www.gammon.com.au/forum/?id=11497)
