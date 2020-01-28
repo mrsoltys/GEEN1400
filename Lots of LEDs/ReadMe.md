@@ -14,8 +14,6 @@ You could use an external 9V power supply, which would get you up to about 4 LED
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Series2.png?raw=true" width="400">
 
-Note: Using multiple LEDs in series will change the resistor value you'll need. [I use this calculator](http://ledcalc.com/#calc) to determine the correct current limiting resistor based on the LEDs I'm using. Before you hook up 2 LEDs on each of your 14 Digital Output pins (28 LEDs total), Please read below about maximum current.
-
 LEDs in Parallel 
 ----------------
 
@@ -29,10 +27,14 @@ Going to our 9V external power supply, you can check it's rating to see how many
 
 Note: This is a pretty boring circuit, because you can't flash them on and off. 
 
-Controlling LEDs from an external Power Supply
+Controlling LEDs Powered by an external Power Supply
 ----------------------------------------------
 
-We've seen how limited the power supply built into an Arduino is. To get around this, we can power our arduino and LEDs off an external power supply, but still control them using our 5V output pins. 
+We've seen how limited the power supply built into an Arduino is. To get around this, we can power our LEDs off an external power supply (like a 9V battery), but still control them using our 5V output pins. To do this we'll need to use a transistor, which acts as a switch or a bridge between the 5V arduino system and the 9V Battery system.
+
+<img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Transistor.png?raw=true" width="400">
+
+This is a really powerful tool to have in your back pocket when working with anything that might draw a lot of current or requires a higher voltage (LEDs, motors, almost anything!)
 
 Controlling more LEDs
 ---------------------
@@ -43,10 +45,16 @@ But actually, you can use your analog input pins as digital output pins as well!
 
 	digitalWrite(A0,High);
 
-So 21? What if you want more?  Well you can multiply pins using some advanced techniques including:
- * Multiplexing
- * Shift Registers
- * Individually adressable LEDs
+What if you want more?  Well you can multiply pins using some advanced techniques including:
+ * [Individually adressable LEDs](https://learn.adafruit.com/adafruit-neopixel-uberguide) (The WS2812b's are my favorite)
+ * [Shift Registers](https://bildr.org/2011/02/74hc595/)
+ * [Multiplexing](https://appelsiini.net/2011/how-does-led-matrix-work/)
+
+
 
  Based on these techniques, you can control a virtually unlmited number of LEDs from your board!
 
+ Calculating Resistors
+ ---------------------
+
+Note: Using multiple LEDs will change the resistor value you'll need. [I use this calculator](http://ledcalc.com/#calc) to determine the correct current limiting resistor based on the LEDs I'm using. Before you hook up 2 LEDs on each of your 14 Digital Output pins (28 LEDs total), Please note that the Arduino can supply a maximum of about 200 mA of power, regardless of how you hook the LEDs to it. This means you can hook up about 10 LEDs to a single Arduino before you start asking for trouble. 
