@@ -28,3 +28,24 @@ Going to our 12 V external power supply, you can check it's rating to see how ma
 
 Note: This is a pretty boring circuit, because you can't flash them on and off. 
 
+Controlling LEDs from an external Power Supply
+----------------------------------------------
+
+We've seen how limited the power supply built into an Arduino is. To get around this, we can power our arduino and LEDs off an external power supply, but still control them using our 5V output pins. 
+
+Controlling more LEDs
+---------------------
+
+What is the maximum number of LEDs you can individually control from your Arduino? You might be tempted to say 14 because you have 14 Digital I/O pins.
+
+But actually, you can use your analog input pins as digital output pins as well! 
+
+	digitalWrite(A0,High);
+
+So 21? What if you want more?  Well you can multiply pins using some advanced techniques including:
+ * Multiplexing
+ * Shift Registers
+ * Individually adressable LEDs
+
+ Based on these techniques, you can control a virtually unlmited number of LEDs from your board!
+
