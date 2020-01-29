@@ -41,9 +41,7 @@ Controlling more LEDs
 
 What is the maximum number of LEDs you can individually control from your Arduino? You might be tempted to say 14 because you have 14 Digital I/O pins[^1]. 
 
-[^1]: It's actually bad practice to use pins 0 and 1, becasue they are the dedicated TX and RX pins.
-
-But actually, you can use your analog input pins as digital output pins as well! 
+But actually, you can use your analog input pins as digital output pins as well[^2]! 
 
 	digitalWrite(A0,HIGH);
 
@@ -52,9 +50,10 @@ What if you want more?  Well you can multiply pins using some advanced technique
  * [Shift Registers](https://bildr.org/2011/02/74hc595/)
  * [Multiplexing](https://appelsiini.net/2011/how-does-led-matrix-work/)
 
-
-
  Based on these techniques, you can control a virtually unlmited number of LEDs from your board!
+
+ [^1]: It's actually bad practice to use pins 0 and 1, becasue they are the dedicated TX and RX pins.
+ [^2]: You'll start to get into trouble if you try to draw more than 500 mA combined on the Arduino board. So this is another limitation. 
 
  Calculating Resistors
  ---------------------
