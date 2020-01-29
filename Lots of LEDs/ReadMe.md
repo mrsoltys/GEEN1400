@@ -6,11 +6,11 @@ LEDs are so bright and shiny, so of course you'll want to use A LOT of them.
 LEDs in Series
 --------------
 
-One of the easiest ways to get lots of LEDs is to wire them in series. Becasue your Arduino outputs *5V*, you'll be limited by the _voltage drop_ across each LED. Most LEDs will have a _Forward Voltage Drop_ somewhere between 1.8V and 2.2V.  This means that 2 LEDs will require ~4V to run, and 3 LEDs will require ~6V (More than your 5V Arduino can supply). So for each 5V output pin, you can run 2 LEDs in series. 
+One of the easiest ways to get lots of LEDs is to wire them in series. Becasue your Arduino outputs **5V**, you'll be limited by the _voltage drop_ across each LED. Most LEDs will have a _Forward Voltage Drop_ somewhere between 1.8V and 2.2V.  This means that 2 LEDs will require ~4V to run, and 3 LEDs will require ~6V (More than your 5V Arduino can supply). So for each 5V output pin, you can run 2 LEDs in series. 
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Series1.png?raw=true" width="400">
 
-You could use an external 9V power supply, which would get you up to about 4 LEDs, but we want more LEDs...
+You could use an external 9V power supply, which would get you up to about 4 LEDs, but that's still not _a lot_ of LEDs...
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Series2.png?raw=true" width="400">
 
@@ -39,11 +39,13 @@ This is a really powerful tool to have in your back pocket when working with any
 Controlling more LEDs
 ---------------------
 
-What is the maximum number of LEDs you can individually control from your Arduino? You might be tempted to say 14 because you have 14 Digital I/O pins.
+What is the maximum number of LEDs you can individually control from your Arduino? You might be tempted to say 14 because you have 14 Digital I/O pins[^1]. 
+
+[^1]: It's actually bad practice to use pins 0 and 1, becasue they are the dedicated TX and RX pins.
 
 But actually, you can use your analog input pins as digital output pins as well! 
 
-	digitalWrite(A0,High);
+	digitalWrite(A0,HIGH);
 
 What if you want more?  Well you can multiply pins using some advanced techniques including:
  * [Individually adressable LEDs](https://learn.adafruit.com/adafruit-neopixel-uberguide) (The WS2812b's are my favorite)
