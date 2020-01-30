@@ -21,7 +21,7 @@ In Parallel, we're limited by current instead of voltage. Each LED has the same 
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Parallel%201.png?raw=true" width="400">
 
-Going to our 9V external power supply, you can check it's rating to see how many LEDs it can run. Many batteries can provide 1 Amp, which would total (1 [A] / 20 [mA/LED])=50 LEDs in parellel. 
+Going to our 9V external power supply, you can check it's rating to see how many LEDs it can run. Many batteries can provide 1 Amp, which would total (1 [A] / 20 [mA/LED])=50 LEDs in parellel. You can get by having 1 small resistor for LEDs in Parallel (See above schematic); but, it is best praactice for each LED to have it's own resistor, as shown below. This is especially true if you have different color LEDs.
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Parallel2.png?raw=true" width="400">
 
