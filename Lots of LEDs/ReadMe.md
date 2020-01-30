@@ -34,7 +34,9 @@ We've seen how limited the power supply built into an Arduino is. To get around 
 
 <img src="https://github.com/mrsoltys/GEEN1400/blob/master/Lots%20of%20LEDs/Transistor.png?raw=true" width="400">
 
-This is a really powerful tool to have in your back pocket when working with anything that might draw a lot of current or requires a higher voltage (LEDs, motors, almost anything!)
+This is a really powerful tool to have in your back pocket when working with anything that might draw a lot of current or requires a higher voltage (LEDs, motors, almost anything!). 
+
+Note: If you want, you can also power the arduino off your 9V by connecting the [9V power to the $VIN$ pin](https://github.com/mrsoltys/GEEN1400/tree/master/Power) on your arduino.
 
 Controlling more LEDs
 ---------------------
@@ -53,6 +55,7 @@ What if you want more?  Well you can multiply pins using some advanced technique
  Based on these techniques, you can control a virtually unlmited number of LEDs from your board!
 
  [^1]: It's actually bad practice to use pins 0 and 1, becasue they are the dedicated TX and RX pins.
+
  [^2]: You'll start to get into trouble if you try to draw more than 500 mA combined on the Arduino board. So this is another limitation. 
 
  Calculating Resistors
