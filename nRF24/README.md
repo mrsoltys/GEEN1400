@@ -66,7 +66,7 @@ Then you can tell if there's an incomming message using `if(radio.available())`.
        radio.read();
 
 ## Examples
-Right now I have one example, a simple sketch for transmitting which contains a [button](https://github.com/mrsoltys/GEEN1400/tree/master/Buttons) connected to the transmitter device and an LED on the reciever device. Pushing the button on the transmitter device sends a 1, which signals the LED to turn on. Releasing the button sends a 0, which signals the LED to turn off.
+Right now I have [one example, a simple sketch for transmitting](https://github.com/mrsoltys/GEEN1400/tree/master/nRF24/Simple%20Example) which contains a [button](https://github.com/mrsoltys/GEEN1400/tree/master/Buttons) connected to the transmitter device and an LED on the reciever device. Pushing the button on the transmitter device sends a 1, which signals the LED to turn on. Releasing the button sends a 0, which signals the LED to turn off.
 
 ## Power savings
 In my examples, the power level is set to `RF24_PA_MAX`. I've heard of others having trouble with `RF24_PA_MIN`... although the 4.7µF decoupling capacitor might alleviate these problems. In the library, there are 4 power levels you can choose from:
