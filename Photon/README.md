@@ -1,25 +1,15 @@
 # Particle Photon
 
-The Particle Photon is one of my favorite micocontrollers. It's small, well documented, inexpensive, and comes with WiFi.
+The Particle Photon is one of my favorite micocontrollers. It's small, well documented, inexpensive, and comes with WiFi. The particle photon is designed to be programmed over wifi either thru the app, or through [particle's IDE](https://build.particle.io/build/). One of the first things you should do is install the particle app on your phone, and read over [this quick-start guide](https://docs.particle.io/quickstart/photon/).
 
-To get started with your new Particle Photon, one of the first things you should do is [install the command line interface (CLI)](https://docs.particle.io/guide/tools-and-features/cli/photon/#installing)
-
-### Getting the MAC address 
-
+## Connecting to CU's WiFi
 To connect to UCB Wireless, you'll have to email [help@colorado.edu](mailto:help@colorado.edu) with your devices' MAC address. To get the mac address:
 
- 1) Connect the Photon to your computer with a USB cable
- 2) Hold down the `SETUP` button until the light begins to flash blue.
- 3) Open your Terminal App, and type:
-
-	 particle serial mac
-
-It normally takes IT about 24 hours to get your device added to CU's network. 
-
-### Programming over USB
-
-You can program the Photon over WiFi, which is a really nice feature... but sometimes you'll want to program it over USB.
-
+  1) Hook up your particle to a computer with the [Arduino Software Downloaded](https://www.arduino.cc/en/main/software)
+  2) Hold down the `SETUP` button until the light begins to flash blue.
+  3) in the `Tools` menu, set the `COM port` to match your particle
+  4) Open the Serial Monitor and type "m"
+  
 # Particle Variables and Functions
 One really cool thing about the Photon is the ability to use Particle's app to view and change variables. Particle currently allows you to view three variable types:
 
@@ -47,6 +37,29 @@ and then you'll need to write the function that does something:
 		variable=args.toInt();
 		return variable;
 	}
+
+
+# Using the Command Line Interface (Advanced)
+
+To get started with your new Particle Photon, one of the first things you should do is [install the command line interface (CLI)](https://docs.particle.io/guide/tools-and-features/cli/photon/#installing)
+
+### Getting the MAC address 
+
+To connect to UCB Wireless, you'll have to email [help@colorado.edu](mailto:help@colorado.edu) with your devices' MAC address. To get the mac address:
+
+ 1) Connect the Photon to your computer with a USB cable
+ 2) Hold down the `SETUP` button until the light begins to flash blue.
+ 3) Open your Terminal App, and type:
+
+	 particle serial mac
+
+It normally takes IT about 24 hours to get your device added to CU's network. 
+
+### Programming over USB
+
+You can program the Photon over WiFi, which is a really nice feature... but sometimes you'll want to program it over USB.
+
+
 
 # Webhooks
 
