@@ -1,6 +1,8 @@
 Choosing Microcontrollers
 =========================
-The Sparkfun Redboard included in your 1400 kit is a good place to start for many projects, but as you require more input/output pins, or want to include advanced features like wifi, or reduce size, you might want to switch to a different arduino-compatiable microcontroller. Here are a few options that I've used in this course
+The Sparkfun Redboard included in your 1400 kit is a good place to start for many projects, but as you require more input/output pins, or want to include advanced features like wifi, or reduce size, you might want to switch to a different arduino-compatiable microcontroller. Here are a few options that I've used in this course.
+
+*NOTE: If you're looking for more Digital Pins, please know that all analog pins can be used as digital I/O*
 
 
 | First Header       |  Notes | Price | Digital I/O pins                       | Memory     |
