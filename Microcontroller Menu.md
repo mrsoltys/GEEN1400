@@ -10,6 +10,7 @@ The Sparkfun Redboard included in your 1400 kit is a good place to start for man
 | Arduino Pro Mini       |  <ul><li>Great library compatability</li><li>very small size</li><li>Careful with power inputs (comes in 5V or 3.3 V)</li><li>Requires HTMI programmer</li></ul> | ~$5 |  <ul><li>14 Digital I/O (6 PWM)</li><li>6 analog input</li></ul> | 32kb Flash | 
 | Particle Photon    |  <ul><li>Has WiFi!</li><li>great support on server side for GET and POST parsing</li><li>small size</li><li>built on ESP32 platform</li></ul> |$19.65  |    <ul><li>8 Digital I/O (4 PWM)</li><li>8 analog input</li></ul>   |        1MB Flash    |
 | Teensy 3.2         | <ul><li>Fast Processor</li><li>lots of pins</li><li>Great accuracy for sensitive measurements</li><li>some pins are hard to access</li><li>small size</li><li>check out compatable MP3 breakout</li></ul> |$19.80 |   <ul><li>34 digital I/Ou pins (12 PWM)</li><li>21 analog input (1 analog output, 12 capacitive touch)</li></ul>    | 256K Flash           |
+| ATTINY 85        | <ul><li>super small</li><li>Requires advanced circut knowledge</li></ul> |$2.80 |   <ul><li>6 digital I/O pins (3 PWM, 3 Analog input)</li></ul>    | 256K Flash           |
 | ESP32              | Content Cell  |                                        |            |
 
 
