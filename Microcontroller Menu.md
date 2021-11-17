@@ -6,7 +6,7 @@ The Sparkfun Redboard included in your 1400 kit is a good place to start for man
 
 
 | First Header       |  Notes | Price | Digital I/O pins                       | Memory     | Speed |
-| -------------      | ------------- | ---------------------                  |-------     | -------     |  -------     |               
+| -------------      | ------------- | ---------------------                  |-------     | -------     |  -------     |       
 | Sparkfun Redboard  |  <ul><li>Great for Prototyping</li><li>Robust power supply and protection options</li><li>large size</li></ul> |$19.95  |  <ul><li>14 Digital I/O (6 PWM)</li><li>6 analog input</li></ul> | 32kb Flash | 16MHz |
 | Arduino Nano       |  <ul><li>Great library compatability</li><li>small size</li><li>Careful with power inputs</li><li>Note: Not the same as Nano Every. Avoid Nano Every</li></ul> | ~$8 |  <ul><li>14 Digital I/O (6 PWM)</li><li>6 analog input</li></ul> | 32kb Flash |  16MHz |
 | Arduino Pro Mini       |  <ul><li>Great library compatability</li><li>very small size</li><li>Careful with power inputs (comes in 5V or 3.3 V)</li><li>Requires HTMI programmer</li></ul> | ~$5 |  <ul><li>14 Digital I/O (6 PWM)</li><li>6 analog input</li></ul> | 32kb Flash | 16MHz |
